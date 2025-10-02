@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sorteio Dia da TI</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f4f4f4 0%, #e0d7ff 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(123,44,255,0.10);
+            padding: 40px 32px;
+            text-align: center;
+            max-width: 400px;
+        }
+        h1 {
+            color: #7B2CFF;
+            font-size: 2.2em;
+            margin-bottom: 12px;
+        }
+        h2 {
+            color: #7B2CFF;
+            font-size: 1.3em;
+            margin-bottom: 18px;
+        }
+        p {
+            color: #555;
+            font-size: 1.1em;
+        }
+        .gift {
+            font-size: 3em;
+            margin-bottom: 12px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        input, select {
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 80%;
+            margin-top: 4px;
+        }
+        button {
+            background: #7B2CFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #FF4F8B;
+        }
+        .numero-sorteio {
+            font-size: 2.2em;
+            color: #FF4F8B;
+            font-weight: bold;
+            margin: 18px 0 10px 0;
+        }
+        .footer {
+            margin-top: 24px;
+            font-size: 0.9em;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if confirmacao %}
+            <div class="gift">🎉</div>
+            <h1>Parabéns!</h1>
+            <h2>Você está participando do Sorteio Especial do Dia da TI!</h2>
+            <p>Sua inscrição foi registrada com sucesso.<br>Guarde seu número da sorte:</p>
+            <div class="numero-sorteio">{{ numero_sorteio }}</div>
+            <p>Boa sorte! Entraremos em contato caso você seja sorteado.</p>
+        {% elif mostrar_formulario %}
+            <h1>Dia da TI</h1>
+            <h2>Preencha seus dados e concorra a prêmios incríveis!</h2>
+            <form method="post" action="/sorteio-ti">
+                <div class="form-group">
+                    <label for="nome">Nome:</label><br>
+                    <input type="text" id="nome" name="nome" required oninvalid="this.setCustomValidity('Por favor, preencha seu nome.')" oninput="this.setCustomValidity('')">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail:</label><br>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="setor">Setor:</label><br>
+                    <input type="text" id="setor" name="setor" required oninvalid="this.setCustomValidity('Por favor, preencha seu setor.')" oninput="this.setCustomValidity('')">
+                </div>
+                <button type="submit">Quero participar!</button>
+            </form>
+        {% else %}
+            <div class="gift">🎁</div>
+            <h1>Sorteio Dia da TI</h1>
+            <h2>Participe e concorra a prêmios como um Tablet e um Fone Bluetooth!</h2>
+            <p>Para celebrar o <strong>Dia da TI</strong>, preencha seus dados e garanta seu número da sorte.</p>
+            <form method="get" action="/sorteio-ti">
+                <button type="submit" name="form" value="1">Preencher informações</button>
+            </form>
+        {% endif %}
+        <div class="footer">
+            © 2025 Sua Empresa. Todos os direitos reservados.<br>
+            <a href="#" style="color:#7B2CFF; text-decoration:none;">Ver regulamento</a>
+        </div>
+    </div>
+</body>
+</html>
