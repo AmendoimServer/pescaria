@@ -2,10 +2,10 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Sorteio Dia da TI</title>
+    <title>Sorteio HCI</title>
     <style>
         body {
-            background: linear-gradient(135deg, #f4f4f4 0%, #e0d7ff 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #c8daff 100%);
             font-family: 'Segoe UI', Arial, sans-serif;
             display: flex;
             flex-direction: column;
@@ -17,18 +17,18 @@
         .container {
             background: white;
             border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(123,44,255,0.10);
+            box-shadow: 0 4px 24px rgba(182, 213, 255, 0.1);
             padding: 40px 32px;
             text-align: center;
             max-width: 400px;
         }
         h1 {
-            color: #7B2CFF;
+            color: #1101eb;
             font-size: 2.2em;
             margin-bottom: 12px;
         }
         h2 {
-            color: #7B2CFF;
+            color: #1101eb;
             font-size: 1.3em;
             margin-bottom: 18px;
         }
@@ -51,7 +51,7 @@
             margin-top: 4px;
         }
         button {
-            background: #7B2CFF;
+            background: #1101eb;
             color: white;
             border: none;
             border-radius: 8px;
@@ -60,11 +60,11 @@
             cursor: pointer;
         }
         button:hover {
-            background: #FF4F8B;
+            background: #4f69ff;
         }
         .numero-sorteio {
             font-size: 2.2em;
-            color: #FF4F8B;
+            color: #4f69ff;
             font-weight: bold;
             margin: 18px 0 10px 0;
         }
@@ -77,16 +77,17 @@
 </head>
 <body>
     <div class="container">
-        <img src="/static/LOGO.png" alt="Logo" style="max-width: 160px; margin-bottom: 18px;">
+        <img src="https://raw.githubusercontent.com/AmendoimServer/pescaria/refs/heads/main/LOGO.png" alt="Logo" style="max-width: 100px; margin-bottom: 18px;">
         {% if confirmacao %}
             <div class="gift">🎉</div>
             <h1>Parabéns!</h1>
-            <h2>Você está participando do Sorteio Especial do Dia da TI!</h2>
+            <h2>Você está participando do Sorteio Especial do HCI!</h2>
             <p>Sua inscrição foi registrada com sucesso.<br>Guarde seu número da sorte:</p>
             <div class="numero-sorteio">{{ numero_sorteio }}</div>
             <p>Boa sorte! Entraremos em contato caso você seja sorteado.</p>
+            <h3 style="color: #1101eb;" >GANHE MAIS CHANCES COMPARTILHANDO COM UM COLABORADOR!!</h3>
         {% elif mostrar_formulario %}
-            <h1>Dia da TI</h1>
+            <h1>Sorteio HCI</h1>
             <h2>Preencha seus dados e concorra a prêmios incríveis!</h2>
             <form method="post" action="/sorteio-ti">
                 <div class="form-group">
@@ -105,16 +106,16 @@
             </form>
         {% else %}
             <div class="gift">🎁</div>
-            <h1>Sorteio Dia da TI</h1>
+            <h1>Sorteio Especial do HCI</h1>
             <h2>Participe e concorra a prêmios como um Tablet e um Fone Bluetooth!</h2>
-            <p>Para celebrar o <strong>Dia da TI</strong>, preencha seus dados e garanta seu número da sorte.</p>
+            <p>Para celebrar o este dia, preencha seus dados e garanta seu número da sorte.</p>
             <form method="get" action="/sorteio-ti">
                 <button type="submit" name="form" value="1">Preencher informações</button>
             </form>
         {% endif %}
         <div class="footer">
-            © 2025 Sua Empresa. Todos os direitos reservados.<br>
-            <a href="#" style="color:#7B2CFF; text-decoration:none;">Ver regulamento</a>
+            © 2025 Hospital de Clínicas de Itajubá. Todos os direitos reservados.<br>
+            <a href="#" style="color:#1101eb; text-decoration:none;">Ver regulamento</a>
         </div>
     </div>
 </body>
